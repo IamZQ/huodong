@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘宝幻灯片上下滑动效果 —— www.zhinengshe.com —— 智能课堂</title>
+<link href="css3.css" rel="stylesheet" type="text/css" />
+<script src="move.js"></script>
+<script>
+window.onload = function(){
+	var oDiv = document.getElementById('oDiv');
+	var oUl = document.getElementById('oul');
+	var leftA = document.getElementById('leftA');
+	var rightA = document.getElementById('rightA');
+	var oLi = oUl.getElementsByTagName('li');
+	now = 0;
+	//console.info(oLi.length +'///'+oLi[1].offsetWidth);
+	oUl.style.width = oLi.length * oLi[1].offsetWidth + 10*oLi.length + 'px'; //给UL设定宽度  宽度=li标签的个数*李标签的宽度+margin-right：10px
+	rightA.onclick = function(){
+		now ++;
+		if(now == oLi.length-4){
+			now =0;
+		}
+		tab();
+	}
+	leftA.onclick = function(){
+		now --;
+		if(now<0){
+			now = oLi.length-5;
+			console.info(now);
+		}
+		tab();
+	}
+	function tab(){
+		startMove(oUl,{left:(-oLi[0].offsetWidth-10)*now});	
+	}
+	timer = setInterval(rightA.onclick,1000);
+	oDiv.onmouseover = function(){
+		clearInterval(timer);	
+	}
+	oDiv.onmouseout = function(){
+		timer = setInterval(rightA.onclick,1000);
+	}
+	if(oLi.length-5<=0){
+		clearInterval(timer);
+		leftA.style.display = 'none';
+		rightA.style.display = 'none';
+	}
+}
+</script>
+</head>
+
+<body>
+<div class="container" id='oDiv'>
+	<a class="leftA" id="leftA">左边</a>
+	<a class="rightA" id="rightA">右边</a>
+	<ul id="oul">
+    	<li><img src="img/1.png" width="201" height="69" /></li>
+    	<li><img src="img/2.png" width="201" height="69" /></li>
+    	<li><img src="img/3.png" width="201" height="69" /></li>
+    	<li><img src="img/4.png" width="201" height="69" /></li>
+    	<li><img src="img/5.png" width="201" height="69" /></li>
+    	<li><img src="img/6.png" width="201" height="69" /></li>
+    	<li><img src="img/7.png" width="201" height="69" /></li>
+    	<li><img src="img/8.png" width="201" height="69" /></li>
+    	<li><img src="img/6.png" width="201" height="69" /></li>
+    	<li><img src="img/7.png" width="201" height="69" /></li>
+    	<li><img src="img/8.png" width="201" height="69" /></li>
+    </ul>
+</div>
+</body>
+</html>

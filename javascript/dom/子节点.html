@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload = function(){
+	var ul = document.getElementById('ul');
+		alert(ul.children.length);// 和childNodes 好用 兼容浏览器
+	for(var i=0; i<ul.childNodes.length; i++){
+		//alert(ul.childNodes[i].nodeType)
+		var cNodeType = ul.childNodes[i].nodeType;
+		if(cNodeType != 3){
+			ul.childNodes[1].style.background = "red";
+			ul.childNodes[3].style.background = "yellow";
+			ul.childNodes[5].style.background = "tan";
+		}else{
+			//alert("文本节点");	
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+	<ul id="ul">
+    	<li>11<span>span</span></li>
+    	<li>11</li>
+    	<li>11</li>
+    </ul>
+</body>
+</html>

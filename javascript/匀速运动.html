@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<style>
+.div1 {
+	width:100px;
+	height:100px;
+	position:absolute;
+	left:600px;
+	top:200px;
+	background:#f60;
+}
+.div2{
+	width:1px;
+	height:800px;
+	position:absolute;
+	left:100px;
+	top:0px;
+	background:#f60;
+}
+.div3{
+	width:1px;
+	height:800px;
+	position:absolute;
+	left:300px;
+	top:0px;
+	background:#f60;
+}
+</style>
+<script>
+var timer = null;
+function starMove(iTar){
+	var oDiv = document.getElementById('oDiv');
+	clearInterval(timer);
+	timer = setInterval(function(){
+		var speed = 0;
+		if(oDiv.offsetLeft < iTar){
+			speed = 7;
+		}else{
+			speed = -7;	
+		}
+		console.info(Math.abs(iTar-oDiv.offsetLeft)<=7);
+		if(Math.abs(iTar - oDiv.offsetLeft) <= 7){ //犯过的错 把<=7写到Math.abs里面去了
+			clearInterval(timer); 
+			oDiv.style.left = iTar+'px';
+		}else{
+			oDiv.style.left = oDiv.offsetLeft+speed+'px';
+		}
+	},30);
+}
+</script>
+</head>
+<body>
+<input type="button" value="运动100" onclick="starMove(100)" />
+<input type="button" value="运动300" onclick="starMove(300)" />
+<div class="div1" id="oDiv"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+</body>
+</html>

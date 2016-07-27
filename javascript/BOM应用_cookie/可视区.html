@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+</style>
+<script type="text/javascript">
+	window.onload = function(){
+		var oBtn = document.getElementById("btn1");
+		var ksqWidth = document.documentElement.clientWidth; //可视区宽度
+		var ksqHeight = document.documentElement.clientHeight;//可视区高度 
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;//滚动条距离 前面兼容IE FF   后面兼容chrome
+		oBtn.onclick = function(){
+			alert('可视区宽：'+ ksqWidth  + ' / 可视区高：' + ksqHeight+ ' / 滚动条距离：' + scrollTop)
+		}
+	}
+</script>
+</head>
+
+<body style="height: 2000px;">
+	<input type="button" name="" id="btn1" value="运行" style="position: fixed"/>
+</body>
+</html>

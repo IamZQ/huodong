@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload = function(){
+	var bt1 = document.getElementById("bt1");
+	var bt2 = document.getElementById("bt2");
+	var dsq1 = null;
+	bt1.onclick = function(){
+		dsq1 = setInterval(function(){
+			console.info('aaaaaaaaaaaa');
+		},1)	
+	console.info(dsq1+"定时器");
+	};
+	bt2.onclick = function(){
+		clearInterval(dsq1);	
+	}
+}
+</script>
+</head>
+
+<body>
+	<input value="开启" id="bt1" type="button" />
+	<input value="关闭" id="bt2" type="button" />
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<style>
+.div1 {
+	width:200px;
+	height:200px;
+	float:left;
+	margin:80px;
+	background:#f00;
+	filter:alpha(opacity:30);
+	opacity:0.3;
+	font-size:14px;
+	color:#fff;
+	opacity:0.3;
+}
+</style>
+<script>
+window.onload = function(){
+	var oDiv1 = document.getElementById('div1');
+	oDiv1.onmouseover = function(){
+		starMove(this,'opacity',100);	
+	}
+	oDiv1.onmouseout = function(){
+		starMove(this,'opacity',30);	
+	}
+}
+//获取非行间样式
+function getStyle(obj,name){
+	if(obj.currentStyle){
+		return obj.currentStyle[name];
+	}else{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+//var alpha = 30;
+function starMove(obj, attr, iTarget){
+	var txt1 = document.getElementById('txt1');
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function(){
+		var cur =  0;
+		if(attr == 'opacity'){
+			cur = Math.round(parseFloat(getStyle(obj,attr))*100) ; //四舍五入
+			console.info(parseFloat(getStyle(obj,attr)));
+			txt1.value = parseFloat(getStyle(obj,attr));
+		}else{
+			cur = parseInt(getStyle(obj,attr))	
+		}
+		speed = (iTarget - cur)/6;
+		speed = speed>0 ? Math.ceil(speed):Math.floor(speed);
+		if(cur == iTarget){
+			clearInterval(obj.timer);
+		}else{
+			if(attr == 'opacity'){
+				obj.style.filter = 'oplha(opacity:'+cur+speed+')'; 
+				obj.style.opacity = (cur+speed)/100;
+			}else{
+				obj.style[attr] = cur + speed + 'px';
+			}
+		}
+	},30);
+}
+</script>
+</head>
+<body>
+<input type="text" id="txt1" />
+<div class="div1" id="div1"></div>
+</body>
+</html>

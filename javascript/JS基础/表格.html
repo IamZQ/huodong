@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<style>
+table tr td {
+	padding:8px 22px;
+}
+</style>
+<script>
+ window.onload = function (){
+	var otable = document.getElementById('table1');
+	//获取TABLE里面的值
+			//alert(otable.getElementsByTagName('tbody')[0].getElementsByTagName('tr')[1].getElementsByTagName('td')[1].innerHTML);
+	// JS支持的 table 读取
+	//alert(otable.tBodies[0].rows[1].cells[1].innerHTML);	
+	for(var i=0; i<otable.tBodies[0].rows.length; i++){
+		if(	i%2 ){
+			otable.tBodies[0].rows[i].style.background="red";
+		}
+	}
+}
+</script>
+</head>
+<body>
+<table id="table1" border="1" style="margin:200px;">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>姓名</td>
+      <td>年龄</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>张三</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>李四</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>王二</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>麻子</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>赵云</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>张三</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>李四</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>王二</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>麻子</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>赵云</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>赵云</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

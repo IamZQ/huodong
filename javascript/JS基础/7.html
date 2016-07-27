@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/banner.js"></script>
+<script type="text/javascript" src="js/scroll.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.navNoticeCenter li:even').addClass('lieven');
+})
+$(function(){
+	$("div.navNoticeCenter").myScroll({
+		speed:100, //数值越大，速度越慢
+		rowHeight:68 //li的高度
+	});
+});
+</script>
+</head>
+
+<body>
+<!--nav Bg-->
+<div class="navTopContainer position_style">
+  <ul class="navTopCenter">
+    <li class="allGoodsTitle cursor left" id="allGoodsTitle">全部商品</li>
+    <li class="navTopTitle left marginLeft24"><a href="#">采购商城</a></li>
+    <li class="navTopTitle left"><a href="#">品牌活动</a></li>
+  </ul>
+  
+<div class="navContainerFloat" id="navContainerFloat">
+<div class="navCenter position_style">
+  <div class="navLeftContainer left">
+    <ul class="navLeftUl">
+      <li class="navLeftLi">
+        <h3><span>五金建材</span>|<span>电线电缆</span></h3>
+      </li>
+      <li class="navLeftLi">
+        <h3><span>专用构件</span>|<span>桥梁支座</span></h3>
+      </li>
+      <li class="navLeftLi">
+        <h3><span>设备材料租凭</span>|<span>特种设备</span></h3>
+      </li>
+      <li class="navLeftLi">
+        <h3><span>交通工程材料</span></h3>
+      </li>
+      <li class="navLeftLi">
+        <h3><span>机电类</span>|<span>光纤</span></h3>
+      </li>
+      <li class="navLeftLi">
+        <h3><span>主材类</span>|<span>钢材型材</span></h3>
+      </li>
+      <li class="navLeftLi">
+        <h3><span>非标产品制作</span></h3>
+      </li>
+      <li class="navLeftLi">
+        <h3><span>工程服务</span></h3>
+      </li>
+    </ul>
+  </div>
+ </div>
+  <!--显示层 Bg-->
+  <div class="navShowDiv" id="navShowDivId" style="display:none;">
+    <div class="navShowDivCenter"> </div>
+    <div class="navShowDivCenter"> </div>
+    <div class="navShowDivCenter"> </div>
+    <div class="navShowDivCenter"> </div>
+    <div class="navShowDivCenter"> </div>
+    <div class="navShowDivCenter"> </div>
+    <div class="navShowDivCenter"> </div>
+  </div>
+</div>
+</div>
+<div style="background:#f60; width:100%; height:1000px">
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+			1d23sa1d23sad1s2a3d1sa23<br />
+</div>
+<script type="text/javascript" src="js/jquery.select.js"></script> 
+<script  type="text/javascript">
+	$(function() {
+		$(".navLeftUl").children(".navLeftLi").hover(function() { //一级导航悬浮，找到dditem
+			$(this).addClass("hover").siblings(".navLeftLi").removeClass("hover");//自己加Hover，移除自己以外的同类标签的HOV
+			var index = $(this).index();//获取元素所在索引
+			$(".navShowDiv").children(".navShowDivCenter").hide();//隐藏showDiv下名字叫showDivZ
+			$(".navShowDiv").children(".navShowDivCenter").eq(index).show();//showdivz的序号和index 的能对上就显示
+		})
+		$(".navLeftUl").hover(function() { //整个导航菜单悬浮
+			$("#navShowDivId").show();//鼠标经过时处理,显示DIV
+		}, function() {
+			$("#navShowDivId").hide();
+			$('.navLeftLi').removeClass("hover");//鼠标离开后处理
+		})
+		$("#navShowDivId").children(".navShowDivCenter").hover(function() { //二级导航悬浮
+			var index = $(this).index();
+			$("#navShowDivId").show();//鼠标经过时处理,显示DIV
+			$(".navLeftUl").children(".navLeftLi").eq(index).addClass("hover");//showdivz的序号和index 的能对上就显示
+		},function(){
+			$("#navShowDivId").hide();//鼠标经过时处理,显示DIV
+			$(".navLeftUl").children(".navLeftLi").removeClass("hover");//
+		})
+		$(".navLogin").hover(function() { //登录注册背景鼠标经过变色
+			$(".navLogin").addClass("navLoginHover");//鼠标经过时
+			$(".navReg").addClass("navRegHover");
+		}, function() {
+			$('.navLogin').removeClass("navLoginHover");//鼠标离开后
+			$('.navReg').removeClass("navRegHover");
+		})
+		
+	})
+	//子页面悬浮导航定位
+	function cliEntWidth(){
+		//获取浏览器可见区域宽度
+		var cWidth = document.body.clientWidth;
+		var boxId = document.getElementById("navContainerFloat");
+		var cRightValue = (cWidth-1190)/2; 
+		if(cRightValue>0){
+			boxId.style.left = cRightValue + "px";
+		}else{
+			boxId.style.left = "0px";
+		}
+		console.info(cRightValue);
+	}
+	//子页面导航悬浮
+	window.onload = function(){
+		var d1 = document.getElementById("allGoodsTitle");
+		var d2 = document.getElementById("navContainerFloat");
+		var time=null;
+		var timer=null;
+			d2.onmouseover = d1.onmouseover = function (){
+			d2.style.display = 'block';
+			clearTimeout(time);
+		};
+		d2.onmouseout = d1.onmouseout = function (){
+			time = setTimeout( function(){
+				d2.style.display = 'none';
+			},150)
+		};
+		cliEntWidth();
+		window.onresize = function(){  
+		cliEntWidth();
+		}
+	}
+	
+</script>
+</body>
+</html>

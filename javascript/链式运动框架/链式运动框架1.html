@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<script src="move.js"></script>
+<style>
+.div1 {
+	width:200px;
+	height:200px;
+	float:left;
+	margin:80px;
+	background:#f00;
+	filter:alpha(opacity:30);
+	opacity:0.3;
+	font-size:14px;
+	color:#fff;
+}
+</style>
+<script>
+window.onload = function(){
+	var oDiv = document.getElementsByTagName('div')[0];
+	oDiv.onmouseover = function(){
+		startMove(oDiv,'width',600,function(){
+			startMove(oDiv,'height',600,function(){
+				startMove(oDiv,'opacity',100);	
+			}); 
+		});
+	 
+	}
+	oDiv.onmouseout = function(){
+		startMove(oDiv,'opacity',30,function(){
+			startMove(oDiv,'height',200,function(){
+				startMove(oDiv,'width',200)		
+			})		
+		})	
+	}
+}
+</script>
+</head>
+<body>
+<div class="div1"></div>
+</body>
+</html>

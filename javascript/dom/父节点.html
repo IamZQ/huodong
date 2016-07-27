@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload = function(){
+	var span = document.getElementsByTagName('span');
+	for(var i=0; i<span.length; i++){
+		span[i].onclick = function(){
+		this.parentNode.style.display = "none";
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+	<ul id="ul">
+    	<li>11<span>隐藏</span></li>
+    	<li>22<span>隐藏</span></li>
+    	<li>33<span>隐藏</span></li>
+    	<li>44<span>隐藏</span></li>
+    	<li>55<span>隐藏</span></li>
+    </ul>
+</body>
+</html>

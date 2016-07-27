@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<style>
+.div1 {
+	width:200px;
+	height:200px;
+	float:left;
+	margin:80px;
+	background:#f00;
+	filter:alpha(opacity:30);
+	opacity:0.3;
+	font-size:14px;
+	color:#fff;
+}
+</style>
+<script>
+window.onload = function(){
+	var oDiv2 = document.getElementById('div2');
+	oDiv2.onmouseover = function(){
+		starMove(this,'height',600);	
+	}
+	oDiv2.onmouseout = function(){
+		starMove(this,'height',200);	
+	}
+	var oDiv1 = document.getElementById('div1');
+	oDiv1.onmouseover = function(){
+		starMove(this,'width',600);	
+	}
+	oDiv1.onmouseout = function(){
+		starMove(this,'width',200);	
+	}
+	var oDiv3 = document.getElementById('div3');
+	oDiv3.onmouseover = function(){
+		starMove(this,'fontSize',50);	
+	}
+	oDiv3.onmouseout = function(){
+		starMove(this,'fontSize',14);	
+	}
+}
+//获取非行间样式
+function getStyle(obj,name){
+	if(obj.currentStyle){
+		return obj.currentStyle[name];
+	}else{
+		return getComputedStyle(obj,false)[name]
+	}
+}
+//var alpha = 30;
+function starMove(obj, attr, iTarget){
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function(){
+		var cur =  parseInt(getStyle(obj,attr));
+		speed = (iTarget -cur)/6;
+		speed = speed>0 ? Math.ceil(speed):Math.floor(speed);
+		if(cur == iTarget){
+			clearInterval(obj.timer);
+		}else{
+			obj.style[attr] = cur + speed + 'px';
+		}
+	},30);
+}
+</script>
+</head>
+<body>
+<div class="div1" id="div1"></div>
+<div class="div1" id="div2"></div>
+<div class="div1" id="div3">dsa1d2s1ad23sa</div>
+</body>
+</html>

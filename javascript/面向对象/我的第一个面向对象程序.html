@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<script>
+//26
+	var obj = new Object(); //创建一个空白对象
+	obj.name = '李健';
+	obj.phone = '13329605506';
+	obj.showName = function(){
+		alert('我的名字叫：'+this.name);	
+	}
+	obj.showPhone = function(){
+		alert('我的手机号：'+this.phone);	
+	}
+	obj.showName();
+	obj.showPhone();
+</script>
+</head>
+<body>
+</body>
+</html>

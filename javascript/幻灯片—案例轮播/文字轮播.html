@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘宝幻灯片上下滑动效果 —— www.zhinengshe.com —— 智能课堂</title>
+<style>
+ul li{
+	list-style-type:none;
+	padding:0;
+}
+ul{
+	margin:auto;
+	position:absolute;
+}
+.container{
+	margin:100px;
+	width:160px;
+	border:1px solid #eaeaea;	
+	height:198px;
+	overflow:hidden;
+	position:relative;
+}
+</style>
+<script src="move.js"></script>
+<script>
+window.onload = function(){
+	var oDiv = document.getElementById('oDiv');
+	var oUl = document.getElementById('oul');
+	var oLi = oUl.getElementsByTagName('li');
+	var now = 0;
+	function tab(){
+		startMove(oUl,{top:-oLi[0].offsetHeight * now});
+	}
+	function next(){
+		now ++;
+		console.info(now +"----"+ oLi.length);
+		if(now == oLi.length-8){
+			now = 0;
+		}
+		tab();
+	}
+	setInterval(next,1000);
+}
+</script>
+</head>
+
+<body>
+<div class="container" id='oDiv'>
+	<ul id="oul">
+    	<li>文字滚动哦1</li>
+    	<li>dsadsa2</li>
+    	<li>文字滚动哦3</li>
+    	<li>多萨达</li>
+    	<li>文字dsa滚动哦</li>
+    	<li>文字dsa滚动哦</li>
+    	<li>文字滚sa动哦</li>
+    	<li>文dsa字滚动哦</li>
+    	<li>文字滚sa动哦</li>
+    	<li>文dsa字滚动哦</li>
+    	<li>文字滚sa动哦</li>
+    	<li>文dsa字滚动哦</li>
+    	<li>结束</li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+		<style>
+			body {
+				height: 3000px;
+			}
+			
+			#div1 {
+				width: 100px;
+				height: 400px;
+				background: #FF6600;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			// 滚动条滚动时候  =  窗口发生大小时候 执行
+			window.onscroll = window.onresize = function() {
+				var oDiv = document.getElementById("div1");
+				var ksqWidth = document.documentElement.clientWidth; //可视区宽度
+				var ksqHeight = document.documentElement.clientHeight; //可视区高度 
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离 前面兼容IE FF   后面兼容chrome
+				oDiv.style.top = ksqHeight + scrollTop - oDiv.offsetHeight + 'px';
+				oDiv.style.left = ksqWidth - oDiv.offsetWidth + 'px';
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="div1"></div>
+	</body>
+
+</html>

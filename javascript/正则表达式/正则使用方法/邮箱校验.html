@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style type="text/css">
+			textarea {
+				margin: 24px;
+			}
+			
+			ul li {
+				background: #f60;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oTxt = document.getElementById("txt");
+				var oBtn = document.getElementById("btn");
+				oBtn.onclick = function() {
+					//英文 数字 下划线 @ 英文 数字 . 英文
+					// \w+          @    [a-z0-9]+ \. [a-z]+    \.转义
+					var re = /^\w+@[a-z0-9]+\.[a-z]+$/i;
+					if(re.test(oTxt.value)){  //test 只要一部分满足要求 就能返回true， 不用全满足
+						alert("这是一个合法邮箱");
+					}else{
+						alert("邮箱格式错误");
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="text" id="txt" value="" size="20"/>
+		<input type="button" id="btn" value="提交" />
+	</body>
+
+</html>

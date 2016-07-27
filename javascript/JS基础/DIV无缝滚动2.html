@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+* {
+	margin:0;
+	padding:0;
+}
+#oDiv .ul li {
+	float:left;
+	width:178px;
+	height:108px;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#oDiv {
+	margin:100px;
+	width:712px;
+	height:108px;
+	position:relative;
+	background:#f60;
+	overflow:hidden;
+}
+#oDiv .ul{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:9;
+}
+.navSpan {
+	background: #f60 none repeat scroll 0 0;
+	color: #fff;
+	display: block;
+	font-size: 24px;
+	height: 40px;
+	line-height: 35px;
+	position: absolute;
+	top: 40px;
+	width: 20px;
+	z-index: 9999;
+	cursor:pointer;
+}
+</style>
+<script>
+	window.onload = function (){
+			var oDiv = document.getElementById('oDiv');
+			var oUl = oDiv.getElementsByTagName('ul')[0];
+			var aLi = oUl.getElementsByTagName("li");
+			oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;
+			oUl.style.width =  aLi[0].offsetWidth  * aLi.length + 'px';
+			console.info(oUl.style.width);
+			setInterval(function(){
+					console.info(oUl.offsetLeft+">>>"+oUl.offsetWidth/2 );
+				if(oUl.offsetLeft>0 ){
+					oUl.style.left = -oUl.offsetWidth/2+ 'px';
+			}
+				oUl.style.left =  oUl.offsetLeft + 10+'px'	;
+			},300);
+	};
+</script>
+</head>
+
+<body>
+<div id="oDiv">
+  <ul class="ul">
+    <li> <img src="../img/1.jpg" width="178" height="108"/> </li>
+    <li> <img src="../img/2.jpg" width="178" height="108"/> </li>
+    <li> <img src="../img/3.jpg" width="178" height="108"/> </li>
+    <li> <img src="../img/4.jpg" width="178" height="108"/> </li>
+  </ul>
+</div>
+</body>
+</html>

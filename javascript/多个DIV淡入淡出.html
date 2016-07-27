@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<style>
+.div1 {
+	width:200px;
+	height:200px;
+	float:left;
+	margin:20px;
+	background:#f00;
+	filter:alpha(opacity:30);
+	opacity:0.3
+}
+</style>
+<script>
+window.onload = function(){
+	var oDiv = document.getElementsByTagName('div');
+	for(var i=0; i<oDiv.length; i++){
+		oDiv[i].alpha = 30; //开定时器
+		oDiv[i].onmouseover = function(){
+			starMove(this,100);	
+		};
+		oDiv[i].onmouseout = function(){
+			starMove(this,30);	
+		};
+	}	
+}
+//var alpha = 30;
+function starMove(obj, iTarget){
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function(){
+		speed = (iTarget - obj.alpha)/6;
+		speed = speed>0 ? Math.ceil(speed):Math.floor(speed);
+		if(obj.alpha == iTarget){
+			clearInterval(obj.timer);
+		}else{
+			obj.alpha += speed;
+			//console.info( obj.alpha+=speed);
+			//console.info('speed='+speed);
+			obj.style.filter = 'alpha(opacity:'+obj.alpha+')';
+			obj.style.opacity = obj.alpha/100;
+		}
+	},30);
+}
+</script>
+</head>
+<body>
+<div class="div1"></div>
+<div class="div1"></div>
+<div class="div1"></div>
+</body>
+</html>

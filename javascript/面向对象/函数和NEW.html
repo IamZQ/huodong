@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<script>
+function createPerson(name,phone){//构造函数--工厂方式
+	
+	//原料
+	//系统偷偷给我们添加了NEW OBJECT
+	//var obj = new Object();
+
+	//加工
+	this.name = name;
+	this.phone =phone;
+	this.showName = function(){
+		alert('我的名字叫：'+this.name);	
+	}
+	this.showPhone = function(){
+		alert('我的手机号：'+this.phone);	
+	}
+	
+	//出厂
+	//return obj;
+	//系统偷偷给我 return obj
+}
+
+var obj = new createPerson('张三','13329605506');
+	obj.showName();
+	obj.showPhone();
+var obj2 = createPerson('李四','18085013325');
+	obj2.showName();
+	obj2.showPhone();
+</script>
+</head>
+<body>
+</body>
+</html>

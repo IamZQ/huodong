@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery图片滚动仿QQ商城带左右按钮控制焦点图片切换滚动</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {
+	zoom:1;
+}
+ul, li {
+	list-style:none;
+}
+img {
+	border:0;
+}
+.wrapper {
+	width:800px;
+	margin:0 auto;
+	padding-bottom:50px;
+}
+h1 {
+	height:50px;
+	line-height:50px;
+	font-size:22px;
+	font-weight:normal;
+	font-family:"Microsoft YaHei", SimHei;
+	margin-bottom:20px;
+}
+/* focus */
+#focus {
+	width:800px;
+	height:280px;
+	overflow:hidden;
+	position:relative;
+}
+#focus ul {
+	height:380px;
+	position:absolute;
+}
+#focus ul li {
+	float:left;
+	width:800px;
+	height:280px;
+	overflow:hidden;
+	position:relative;
+	background:#000;
+}
+#focus ul li div {
+	position:absolute;
+	overflow:hidden;
+}
+#focus .btnBg {
+	position:absolute;
+	width:800px;
+	height:20px;
+	left:0;
+	bottom:0;
+	background:#000;
+}
+#focus .btn {
+	position:absolute;
+	width:780px;
+	height:10px;
+	padding:5px 10px;
+	right:0;
+	bottom:0;
+	text-align:right;
+}
+#focus .btn span {
+	display:inline-block;
+	_display:inline;
+	_zoom:1;
+	width:25px;
+	height:10px;
+	_font-size:0;
+	margin-left:5px;
+	cursor:pointer;
+	background:#fff;
+}
+#focus .btn span.on {
+	background:#fff;
+}
+#focus .preNext {
+	width:45px;
+	height:100px;
+	position:absolute;
+	top:90px;
+	background:url(images/banner/sprite.png) no-repeat 0 0;
+	cursor:pointer;
+}
+#focus .pre {
+	left:0;
+}
+#focus .next {
+	right:0;
+	background-position:right top;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/banner.js"></script>
+</head>
+
+<body>
+<div class="wrapper">
+  <div id="focus">
+    <ul>
+      <li><a href="http://www.17sucai.com/" target="_blank"><img src="images/banner/01.jpg" alt="QQ商城焦点图效果下载" /></a></li>
+      <li><a href="http://www.17sucai.com/" target="_blank"><img src="images/banner/02.jpg" alt="QQ商城焦点图效果教程" /></a></li>
+      <li><a href="http://www.17sucai.com/" target="_blank"><img src="images/banner/03.jpg" alt="jquery商城焦点图效果" /></a></li>
+      <li><a href="http://www.17sucai.com/" target="_blank"><img src="images/banner/04.jpg" alt="jquery商城焦点图代码" /></a></li>
+      <li><a href="http://www.17sucai.com/" target="_blank"><img src="images/banner/05.jpg" alt="jquery商城焦点图源码" /></a></li>
+    </ul>
+  </div>
+  <!--focus end--> 
+</div>
+<!-- wrapper end -->
+</body>
+</html>

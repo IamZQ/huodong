@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>仿FLASH的图片轮换效果 —— www.zhinengshe.com 智能社</title>
+<link rel="stylesheet" type="text/css" href="zns_style.css">
+<script src="move.js"></script>
+<script>
+
+window.onload=function ()
+{
+	var oDiv = document.getElementById('playimages');
+	var oBtenPrev = getByClass(oDiv,'prev')[0];
+	var oBtenNext = getByClass(oDiv,'next')[0];
+	var oMarkLeft = getByClass(oDiv,'mark_left')[0];
+	var oMarkRight = getByClass(oDiv,'mark_right')[0];
+	var oDivSmall = getByClass(oDiv,'small_pic')[0];
+	var oUlSmall = oDivSmall.getElementsByTagName('ul')[0];
+	var oLiSmall = oDivSmall.getElementsByTagName('li');
+	var oUlBig = getByClass(oDiv,'big_pic')[0];
+	var aLiBig = oUlBig.getElementsByTagName('li');
+	var numPage = getByClass(oDiv,'length')[0];
+	var nowZIndex = 2;
+	var now = 0;
+	oUlSmall.style.width = oLiSmall.length*oLiSmall[0].offsetWidth+"px";//计算UL宽度
+	//显示隐藏箭头
+	oBtenPrev.onmouseover = oMarkLeft.onmouseover =function(){
+		startMove(oBtenPrev,'opacity',100);
+	}
+	oBtenPrev.onmouseout = oMarkLeft.onmouseout =function(){
+		startMove(oBtenPrev,'opacity',0);
+	}
+	oBtenNext.onmouseover = oMarkRight.onmouseover =function(){
+		startMove(oBtenNext,'opacity',100);
+	}
+	oBtenNext.onmouseout = oMarkRight.onmouseout =function(){
+		startMove(oBtenNext,'opacity',0);
+	}
+	//大图切换
+	/*给小图li标签加入点击事件*/
+	for(var i=0; i<oLiSmall.length; i++){
+		oLiSmall[i].index = i;
+		oLiSmall[i].onclick = function(){
+			//判断大图是自己就不刷新
+			if(this.index == now )return;
+			now = this.index;
+			tab();
+		}
+		oLiSmall[i].onmouseover = function(){
+			startMove(this,'opacity',100);
+		}
+		oLiSmall[i].onmouseout = function(){
+			if(this.index == now){  //IF简写	 if(this.index != now){startMove(this,'opacity',100)}
+				startMove(this,'opacity',100);
+			}else{
+				startMove(this,'opacity',20);	
+			}
+		}
+	}
+    //封装大图切换
+	function tab(){	
+			console.info(now);
+		aLiBig[now].style.zIndex = nowZIndex++;
+		//小图Opacity
+		for(var i=0; i<oLiSmall.length; i++){
+			startMove(oLiSmall[i],'opacity',20);
+		}
+		startMove(oLiSmall[now],'opacity',100);
+		aLiBig[now].style.height = 0;  //大图FLASH 效果从上往下
+		startMove(aLiBig[now],'height',320);	
+		if(now == 0){
+			startMove(oUlSmall, 'left',0);
+		}else if(now+1 == oLiSmall.length){ // 当now的值=LI 的个数的时候，UL往右移动的距离
+			startMove(oUlSmall, 'left',-(now-2)*oLiSmall[0].offsetWidth);//计算小图滚
+		}else{
+			startMove(oUlSmall, 'left',-(now-1)*oLiSmall[0].offsetWidth);//计算小图滚动
+		}
+		numPage.innerHTML = now+1+'/'+oLiSmall.length;
+		/*
+		if(now==oLiSmall.length-2 || now ==oLiSmall.length-1){ // 当now的值=LI 的个数的时候，UL往右移动的距离
+			startMove(oUlSmall, 'left',"-390px");//计算小图滚
+		}else{
+			startMove(oUlSmall, 'left',-(now)*oLiSmall[0].offsetWidth);//计算小图滚动
+		}*/	
+	} 
+	//点击下一张按钮
+	oBtenNext.onclick = function(){
+		now++;
+		if(now == oLiSmall.length){
+			now =0;
+		}
+		tab();
+	}
+	//点击下一张按钮
+	oBtenPrev.onclick = function(){
+		now--;
+		if(now == -1){
+			now =oLiSmall.length-1;
+		}
+		tab();
+	}
+	numPage.innerHTML = now+1+'/'+oLiSmall.length;
+	
+	var timer=setInterval(oBtenNext.onclick, 3000);
+	playimages.onmouseover = function(){
+		clearInterval(timer);	
+	}
+	playimages.onmouseout = function(){
+		timer=setInterval(oBtenNext.onclick, 3000);
+	}
+	document.onkeydown = function(ev){
+		oEvent = ev||event;
+		clearInterval(timer);	
+		if(oEvent.keyCode==39){
+			now++;
+			if(now == oLiSmall.length){
+				now =0;
+			}
+				tab();
+			timer=setInterval(oBtenNext.onclick, 3000);
+		}else if(oEvent.keyCode==37){
+			now--;
+			if(now == -1){
+				now =oLiSmall.length-1;
+			}
+				tab();
+			}
+			timer=setInterval(oBtenNext.onclick, 3000);
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="playimages" class="play">
+    <ul class="big_pic">
+
+		<div class="prev"></div>
+		<div class="next"></div>
+
+		<div class="text">加载图片说明……</div>
+		<div class="length">计算图片数量……</div>
+		
+		<a class="mark_left" href="javascript:;"></a>
+		<a class="mark_right" href="javascript:;"></a>
+		<div class="bg"></div>
+		
+        <li style="z-index:1;"><img src="images/1.jpg" /></li>
+        <li><img src="images/2.jpg" /></li>
+        <li><img src="images/3.jpg" /></li>
+        <li><img src="images/4.jpg" /></li>
+        <li><img src="images/5.jpg" /></li>
+        <li><img src="images/6.jpg" /></li>
+    </ul>
+    <div class="small_pic" >
+        <ul style="width:390px;" id="smallUl">
+            <li style="filter: 100; opacity: 1;"><img src="images/1.jpg" /></li>
+            <li><img src="images/2.jpg" /></li>
+            <li><img src="images/3.jpg" /></li>
+            <li><img src="images/4.jpg" /></li>
+            <li><img src="images/5.jpg" /></li>
+            <li><img src="images/6.jpg" /></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

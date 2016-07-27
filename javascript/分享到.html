@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+.div1 {
+	width:150px;
+	height:200px;
+	background:#f60;
+	color:#fff;
+	position:absolute;
+	left:-150px;
+	top:80px;
+}
+.div1 span{
+	width:20px;
+	height:60px;
+	background:#0893d4;
+	color:#fff;
+	position:absolute;
+	top:80px;
+	font-size:12px;
+	text-align:center;
+	right:-20px;
+}
+</style>
+<script>
+window.onload = function(){
+	var dId = document.getElementById('divId');
+	dId.onmouseover = function(){
+		starMove(0);		 //传值第一个表示移动到的重点位置， 第二参数 是左动-10 ，右动10
+	};
+	dId.onmouseout = function(){
+		starMove(-150);	
+	}
+}
+var timer = null;
+function starMove(iTarget){
+	var dId = document.getElementById('divId');
+	clearInterval(timer);
+	timer = setInterval(function(){  
+		var speed = 0;
+		if(dId.offsetLeft>iTarget){//通过传入的值，判断出物体需要往哪边运动
+			speed = -5;
+		}else{
+			speed = 5;
+		}
+		if(dId.offsetLeft == iTarget){
+			clearInterval(timer);
+		}else{
+			dId.style.left = dId.offsetLeft + speed + 'px';	
+		}
+	},30);
+}
+</script>
+</head>
+<body>
+<div id="divId" class="div1">
+	<span id="spanId">分享到</span>
+</div>
+</body>
+</html>

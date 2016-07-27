@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<style>
+#ulId li{
+	list-style: none;
+	float: left;
+	border: 1px solid #f60;
+	margin-left: 14px;
+}
+.showImg{
+	margin: 20px;
+	margin-left: 54px;
+}
+</style>
+<script>
+window.onload = function(){
+	showImg();
+}
+function showImg(){
+	var oUl = document.getElementById("ulId");
+	var oImg = oUl.getElementsByTagName("img");
+	var showImgId = document.getElementById("showImgId");
+	for(var i=0 ;i<oImg.length; i++){
+		oImg[i].onclick = function(){
+			showImgId.src = this.src
+		}
+	}
+}
+</script>
+</head>
+<body>
+	<ul id="ulId">
+		<li><img src="images/goods/rightPhoto21.png" alt="" /></li>
+		<li><img src="images/goods/rightPhoto22.png" alt="" /></li>
+		<li><img src="images/goods/rightPhoto23.png" alt="" /></li>
+		<li><img src="images/goods/rightPhoto24.png" alt="" /></li>
+	</ul>
+	<img src="images/goods/text.png" alt="" id="showImgId" class="showImg" width="330" height="300"/>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div1{
+	width:200px;
+	height:200px;
+	background:#f60;
+	margin:100px;	
+	position:relative;
+}
+#div2{
+	width:100px;
+	height:100px;
+	background:#0893d4;
+	position:absolute;
+	left:50px;
+	top:50px;	
+}
+</style>
+<script>
+function getByClass(oParent,sClass){
+	var aResult = [];
+	var str = oParent.getElementsByTagName('*');
+	for(var i=0; i<str.length; i++){
+		if(str[i].className == sClass){
+			aResult.push(str[i]);
+		}
+	}
+	return aResult;
+}
+window.onload = function(){
+	var ul = document.getElementById('ul');
+	var aBox = getByClass(ul, 'box');
+	for(var i=0; i<aBox.length; i++){
+		aBox[i].style.background = 'red';
+	}
+}
+</script>
+</head>
+
+<body>
+	<ul id="ul">
+    	<li class="box">11<span>span</span></li>
+    	<li>11</li>
+    	<li>11</li>
+    	<li class="box">11<span>span</span></li>
+    	<li class="box">11<span>span</span></li>
+    	<li>11</li>
+    	<li>11</li>
+    	<li class="box">11<span>span</span></li>
+    	<li class="box">11<span>span</span></li>
+    	<li>11</li>
+    	<li>11</li>
+    </ul>
+</body>
+</html>

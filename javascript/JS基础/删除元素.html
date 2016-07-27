@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<script>
+ window.onload = function (){
+	 var oa = document.getElementsByTagName('b');
+	 var ulId = document.getElementById('ulId');
+	 for(var i=0; i<oa.length; i++){
+		 oa[i].onclick = function(){
+			 ulId.removeChild(this.parentNode);
+		}
+	 }
+}
+</script>
+</head>
+<body>
+	<ul id="ulId">
+    	<li>1111111111<b>删除</b></li>
+    	<li>2222222222<b>删除</b></li>
+    	<li>3333333333<b>删除</b></li>
+    	<li>4444444444<b>删除</b></li>
+    </ul>
+</body>
+</html>

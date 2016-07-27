@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style type="text/css">
+			textarea {
+				margin: 24px;
+			}
+			
+			ul li {
+				background: #f60;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oTxt = document.getElementById("txt");
+				var oBtn = document.getElementById("btn");
+				var oTxt2 = document.getElementById("txt2");
+				oBtn.onclick = function() {
+					var re = /cao|操|艹|日/g;
+					
+					oTxt2.innerHTML = oTxt.value.replace(re,'*');
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<textarea name="" rows="10" cols="40" id="txt"></textarea>
+		<br />
+		<input type="button" id="btn" value="提交" />
+		<br />
+		<textarea name="" rows="10" cols="40" id="txt2"></textarea>
+	</body>
+
+</html>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘宝幻灯片上下滑动效果 —— www.zhinengshe.com —— 智能课堂</title>
+<script src="move2.js"></script>
+<style>
+ul li{
+	list-style-type:none;
+	border-bottom:1px dashed #eaeaea;
+	line-height:24px;
+	padding:0 14px;
+	overflow:hidden;
+	opacity:0;
+	filter:alpha(opacity:0);
+}
+ul{
+	border:1px solid #eaeaea;
+	width:400px;
+	padding:0;
+	padding-bottom:24px;
+	padding-top:24px;	
+	overflow:hidden;
+}
+</style>
+<script>
+window.onload=function (){
+	var txt = document.getElementById('txt1');
+	var btn = document.getElementById('btn1');
+	var ul1 = document.getElementById('ul1');
+	btn.onclick = function(){
+		var oli = document.createElement('li');	
+		if(txt.value != ''){
+			oli.innerHTML = txt.value;
+			txt.value = '';
+			if(ul1.children.length>0){
+				ul1.insertBefore(oli, ul1.children[0]);
+			}else{
+				ul1.appendChild(oli);	
+			}
+		}
+	//运动
+		var liHeight = oli.offsetHeight;
+		oli.style.height = '0';
+		startMove(oli,{height:liHeight},function(){
+			startMove(oli,{opacity:100}); 
+		});
+	}
+	
+};
+</script>
+</head>
+
+<body style="padding:100px;">
+<textarea id="txt1"></textarea><input type="button" id="btn1" value="发布" />
+<ul id="ul1">
+</ul>
+</body>
+</html>

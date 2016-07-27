@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+*{
+	margin:0;
+	padding:0;
+	list-style:none;	
+}
+#div1{
+	width:200px;
+	height:200px;
+	background:#f60;
+}
+</style>
+<script>
+window.onload = function(){
+	var oDiv = document.getElementById('div1');
+	var oDiv2 = document.getElementById('div2');
+	var disX = 0;
+	var disY = 0;
+	oDiv.onmousedown = function(ev){
+		var oEvent = ev || event;
+		//获取鼠标在Div上的位置。
+		disX = oEvent.clientX - oDiv.offsetLeft;
+		//坐标 = 鼠标位置 - Div距离左边的距离
+		disY = oEvent.clientY - oDiv.offsetTop; 
+		
+		//给DIV添加漂浮属性，设定DIV坐标
+		oDiv.style.left = oEvent.clientX-disX + 'px';
+		oDiv.style.top = oEvent.clientY-disY + 'px';
+		oDiv.style.position = 'absolute';
+		oDiv.style.margin = '0';
+		//给DIV添加漂浮属性，设定DIV坐标
+		if(oDiv.setCapture){
+			oDiv.onmousemove =mouseOverFn;
+			oDiv.onmouseup = mouseUpFn; 
+			oDiv.setCapture();
+			return false;
+		}else{
+			document.onmousemove = mouseOverFn;
+			document.onmouseup = mouseUpFn;
+		}
+		//合并函数
+		function mouseOverFn(ev){
+			var oEvent = ev || event;
+			var l = oEvent.clientX - disX;
+			var t = oEvent.clientY - disY;
+			var dT = document.documentElement.clientHeight;
+			var dL = document.documentElement.clientWidth;
+			if(l<0){
+				l=0;
+			}
+			else if(l>dL - oDiv.offsetWidth){
+				l=dL - oDiv.offsetWidth;	
+			}
+			if(t<0){
+				t=0;
+			}else if(t>dT - oDiv.offsetHeight){
+				t=dT - oDiv.offsetHeight;	
+			}
+			//移动后坐标 = 鼠标位置 - 鼠标距离Div 的位置
+			oDiv.style.left = l + 'px';
+			oDiv.style.top = t + 'px';
+		};
+		//鼠标弹起
+		function mouseUpFn(){
+			this.onmousemove = null; //当鼠标放开后move不执行
+			this.onmouseup = null;	
+			if(this.releaseCapture){
+				this.releaseCapture();
+			}
+		};
+
+		return false;
+	}
+}
+</script>
+</head>
+
+<body>
+d1s2a3d1sa23d1sa23<br />
+d1s2a3d1sa23d1sa23<br />
+d1s2a3d1sa23d1sa23<br />
+d1s2a3d1sa23d1sa23<br />
+
+	<div id="div1">
+    	<div id="div2" style="background:#ff9600; cursor:all-scroll;">点我可以移动</div>
+    </div>
+d1s2a3d1sa23d1sa23<br />
+d1s2a3d1sa23d1sa23<br />
+d1s2a3d1sa23d1sa23<br />
+</body>
+</html>

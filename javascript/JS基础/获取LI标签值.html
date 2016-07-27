@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title></title>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script>
+    function selectValue(){
+	var spanId = document.getElementById("spanId");
+	var obj_lis = document.getElementById("test").getElementsByTagName("li");
+	for(i=0;i<obj_lis.length;i++){
+		obj_lis[i].onclick = function(){
+			spanId.innerHTML=this.innerHTML;
+		}
+	}
+}
+ </script>
+</head>
+<body>
+	<span id="spanId"></span>
+    <ol id="test">
+        <li onclick="selectValue()" class="ui-widget-content" value="110101">东城区</li>
+        <li onclick="selectValue()" class="ui-widget-content" value="110102">西城区</li>
+        <li onclick="selectValue()" class="ui-widget-content" value="110103">朝阳区</li>
+        <li class="ui-widget-content" value=" 110106">丰台区</li>
+        <li class="ui-widget-content" value="110107">石景山区</li>
+        <li class="ui-widget-content" value="110108">海淀区</li>
+        <li class="ui-widget-content" value="110224">亦庄开发区</li>
+    </ol>
+    <p>
+        <input id="Button1" type="button" value="button" onclick="buttonClick()" /></p>
+</body>
+</html>

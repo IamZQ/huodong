@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+div {
+	width:10px;
+	height:10px;
+	background:#f60;
+	position:absolute;
+}
+</style>
+<script>
+window.onload=function (){
+	function getPos(aaaa){
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop; //处理出现滚动条的时候
+		var scrollLeft = document.documentElement.scrollLeft||document.body.scrollLeft; //处理出现滚动条的时候
+		return{x: aaaa.clientX+scrollLeft , y:aaaa.clientY + scrollTop }
+		
+	}
+	document.onmousemove = function(ev){
+		var oEvent = ev || event; //处理兼容性
+		var oDiv = document.getElementsByTagName('div');
+		var pos = getPos(oEvent);
+		for(var i = oDiv.length -1 ; i> 0 ; i--){
+			oDiv[i].style.left = oDiv[i-1].offsetLeft + 'px';
+			oDiv[i].style.top = oDiv[i-1].offsetTop + 'px';
+			console.info("第"+i+"个DIV- "+oDiv[i].style.left +' ==left');
+		}
+		oDiv[0].style.left = pos.x +  'px';	
+		oDiv[0].style.top =  pos.y +  'px';	
+	}
+};
+</script>
+</head>
+
+<body style="height:3000px;">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

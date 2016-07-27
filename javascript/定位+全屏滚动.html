@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+			.container{
+				width: 600px;
+				height: 800px;
+				background: #eaeaea;
+				border: 1px solid #ff6600;
+				margin: auto;
+			}
+			.center{
+				width: 20px;
+				height: 200px;
+				background: #f60;
+				position: fixed;
+				top: 18px;
+			}
+		</style>
+		<script type="text/javascript">
+		window.onload =	window.onresize = function(){
+				var cWidth = document.body.clientWidth;
+				var posFix = document.getElementById("posFix");
+				posFix.style.left = cWidth/2+300-30 +'px';
+				console.log(cWidth)
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="center" id="posFix">A</div>
+			
+		</div>
+	</body>
+</html>

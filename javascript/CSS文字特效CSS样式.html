@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+.citylili a::before, .citylili a::after {
+	display: inline-block;
+	opacity: 0;
+	transition: transform 0.3s ease 0s, opacity 0.2s ease 0s;
+}
+.citylili a::after {
+	content: "]";
+	margin-left: 2px;
+	transform: translateX(-2px);
+}
+.citylili a::before {
+	content: "[";
+	margin-right: 2px;
+	transform: translateX(2px);
+}
+.citylili a:hover::before, .citylili a:hover::after, .citylili a:focus::before, .citylili a:focus::after {
+	opacity: 1;
+	transform: translateX(0px);
+}
+.citylili a:hover, .citylili a:hover {
+	color: #47aa42;
+}
+</style>
+</head>
+
+<body>
+<li class="citylili"><a citypinyin="suzhou" surl="/suzhou" cityname="苏州" href="javascript:void(0)" class="cityselecta">苏州</a></li>
+</body>
+</html>

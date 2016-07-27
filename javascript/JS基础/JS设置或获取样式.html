@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+	function css(){
+		if(arguments.length==2){ //获取参数
+			return arguments[0].style[arguments[1]];
+		}else{
+			return arguments[0].style[arguments[1]] = arguments[2];	
+		}
+	}
+	window.onload = function(){
+		var oDiv = document.getElementById("oDiv1");
+		alert(css(oDiv,'width',"900px"));	
+	}
+</script>
+</head>
+
+<body>
+	<div id="oDiv1" style="width:300px; height:400px; background:#f60;"></div>
+	<input type="text" id="txt1"/>+
+	<input type="text" id="txt2" />=
+	<input type="button" id="btn1" value="计算"/>
+</body>
+</html>
+ 

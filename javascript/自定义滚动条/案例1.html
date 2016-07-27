@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+*{
+	margin:0;
+	padding:0;
+	list-style:none;	
+}
+#parent{
+	width:600px;
+	height:20px;
+	background:#ccc;
+	position:relative;	
+	margin:40px auto;
+}
+#div1{
+	width:20px;
+	height:20px;
+	background:#f60;
+	position:absolute;
+}
+#div2{
+	width:400px;
+	height:300px;
+	border:1px solid #eaeaea;	
+	position:relative;
+	overflow:hidden;
+	margin:40px auto;
+}
+#div3{
+	position:absolute;
+	padding:10px;
+}
+</style>
+<script>
+window.onload = function(){
+	var oParent = document.getElementById('parent');
+	var oDiv = document.getElementById('div1');
+	var oDiv2 = document.getElementById('div2');
+	var oDiv3 = document.getElementById('div3');
+	var disX = 0;
+	oDiv.onmousedown = function(ev){
+		var oEvent = ev || event;
+		//获取鼠标在Div上的位置。
+		disX = oEvent.clientX - oDiv.offsetLeft;
+		//坐标 = 鼠标位置 - Div距离左边的距离
+		//给DIV添加漂浮属性，设定DIV坐标
+		oDiv.style.left = oEvent.clientX-disX + 'px';
+		oDiv.style.position = 'absolute';
+		oDiv.style.margin = '0';
+		//给DIV添加漂浮属性，设定DIV坐标
+		if(oDiv.setCapture){
+			oDiv.onmousemove =mouseOverFn;
+			oDiv.onmouseup = mouseUpFn; 
+			oDiv.setCapture();
+			return false;
+		}else{
+			document.onmousemove = mouseOverFn;
+			document.onmouseup = mouseUpFn;
+		}
+		//合并函数
+		function mouseOverFn(ev){
+			var oEvent = ev || event;
+			var l = oEvent.clientX - disX;
+			var dL = document.documentElement.clientWidth;
+			if(l<0){
+				l=0;
+			}
+			else if(l>oParent.offsetWidth-oDiv.offsetWidth){
+				l= oParent.offsetWidth-oDiv.offsetWidth;	// 当滑块值大于外框宽度，left=外框-自身宽度
+			}
+			//移动后坐标 = 鼠标位置 - 鼠标距离Div 的位置
+			oDiv.style.left = l + 'px';
+			//鼠标滚动
+			//储存比例值
+			var scale = l / (oParent.offsetWidth - oDiv.offsetWidth); 
+			oDiv3.style.top = -scale * (oDiv3.offsetHeight - oDiv2.offsetHeight) + 'px';
+		};
+		//鼠标弹起
+		function mouseUpFn(){
+			this.onmousemove = null; //当鼠标放开后move不执行
+			this.onmouseup = null;	
+			if(this.releaseCapture){
+				this.releaseCapture();
+			}
+		};
+
+		return false;
+	}
+}
+</script>
+</head>
+
+<body>
+	<div id="parent">
+    	<div id="div1"></div>
+    </div>
+    <div id="div2">
+    	<div id="div3">百度为您找到相关结果约9,560,000个
+javascript定义变量时加var与不加var的区别_基础知识_脚本之家
+2014年12月22日 - 这篇文章主要介绍了javascript 变量中 var 与不加var的区别,需要的朋友可以参考下... 这篇文章主要介绍了javascript 变量中 var 与不加var的区别,需要...
+www.jb51.net/article/5... 
+ - 百度快照 - 746条评价
+js 函数的参数声明中用 var 与不用 var的区别_百度知道
+
+6个回答 - 提问时间: 2010年01月29日
+[专业]答案:var声明的变量,作用域是当前function没有声明的变量,直接赋值的话,会自动创建变量但作用域是全局的.//-----------------functiondoSth(){a="...
+zhidao.baidu.com/link?... 
+ - 评价
+js中定义变量问题,请问定义变量时有var关键字...	2个回答	2014-01-14
+变量前加var和不加有什么区别 - 技术问答	3个回答	2013-05-30
+更多知道相关问题>>
+JavaScript-使用var和不使用var,在JS中有什么差异? - 德问:编程...
+2013年5月3日 - 如果最后都没有找到定义语句(即 var i语句),就会有两种结果出现——报错或解析器帮你在作用域链的最后一个节点定义该变量,因为各个浏览器的JS解析实现...
+www.dewen.net.cn/q/... 
+ - 百度快照 - 评价
+js变量前有 var 与没有的区别 - fanfanjin的专栏 - 博客频道 - ...
+2011年7月8日 - 而在过程体内(包括方法function(){},对象Object o={})内的对象加var保留字则为局部变量,而不加var保留字即为全局变量 js的全局作用域应该是在看着办的...
+blog.csdn.net/fanfanji... 
+ - 百度快照 - 1484条评价
+为您推荐：js var intjs 变量有无varjs var
+js函数里使用var与不使用var的区别 | 学步园
+2013年8月27日 - 这两天测试了函数setTimeout()和clearTimeout()...js函数里使用var与不使用var的区别 | 学步园 ...
+www.xuebuyuan.com/7118... 
+ - 百度快照 - 评价
+JavaScript中定义变量添var和不加var的区别_IT知识问答_希赛网
+2014年4月30日 - JavaScript中定义变量加var和不加var的区别 JavaScript中var关键字定义变量过程中的作用: 以下是测试代码片
+ - 百度快照 - 498条评价
+JavaScript中有var和没var的区别 - 小方。 - 博客园
+Js中的变量声明的作用域是以函数为单位,所以我们经常见到避免全局变量污染的方法...结论就是,加上var 和没加 var的声明全局变量是有区别的。 使用var语句重复声明...
+www.cnblogs.com/spryin... 
+ - 百度快照 - 811条评价
+JavaScript中变量声明有var和没var的区别_最火下载站
+2013年7月18日 - 本文来论述JavaScript中变量声明有var和没var的区别,关于Js中的变量声明的...结论就是,加上var 和没加 var的声明全局变量是有区别的。 使用var语句...
+www.veryhuo.com/a/view... 
+ - 百度快照 - 32条评价
+加var 与不加var声明变量有什么区别?_慕课问答
+2015年6月2日 - 加var 与不加var声明变量有什么区别?..JS中变量声明分显式申明和隐式声明。 var num=100;//显式 num=100;//隐式...
+www.imooc.com/qadetail... 
+ - 百度快照 - 130条评价
+js中带var的声明和不带var的声明设计意图? - 前端开发 - 知乎
+2014年1月19日 - 最近在学JS。我知道关于var声明和不带var声明的区别:诸如声明提前和delete还有声明时是否需要赋值定义等。所以,不用教我怎么用。我想问的是,从js这个...
+www.zhihu.com/question... 
+ - 百度快照 - 1122条评价
+相关搜索
+	</div>
+    </div>
+</body>
+</html>

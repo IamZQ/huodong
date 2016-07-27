@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script src="ajax.js"></script>
+<script>
+//24
+window.onload = function(){
+	var oBtn = document.getElementById('btn1');
+	var oUser = document.getElementById('txt1').value;
+	var oPwd = document.getElementById('txt2').value;
+	oBtn.onclick = function(){
+		ajax('jsonUser.txt?t='+ new Date().getTime(), function(str){
+			var arr = eval(str);
+			//获取数据库数据
+			for(var i=0; i<arr.length; i++){
+				if(oUser == arr[i].user && oPwd == arr[i].pwd){
+					console.info('登录成功');	
+				}else{
+					console.info('用户名或密码错误');	
+				}
+			}
+		}, function(){
+			alert('失败');	
+		})	
+	}
+}
+</script>
+</head>
+
+<body>
+	用户名：<input type="text" size="15"  id="txt1"/>&emsp;
+	密码：<input type="text" size="15" id="txt2"/>
+    <input type="button" value="按钮" id="btn1"/>
+</body>
+</html>

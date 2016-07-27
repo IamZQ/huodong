@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<script>
+ window.onload = function (){
+	var oul = document.getElementById('ul');	
+	var btn = document.getElementById('btn');	
+	var txt = document.getElementById('txt');	  
+	btn.onclick = function(){
+		var oli = document.createElement('li');
+		var ali = oul.getElementsByTagName('li');
+		oli.innerHTML = txt.value;
+		// 标签插在LI标签元素前面
+		if(ali.length>0){
+			oul.insertBefore(oli,ali[0]);  //父节点.insertBefore(标签,插入位置)
+		}else{
+			oul.appendChild(oli);
+		}
+	}
+}
+</script>
+</head>
+<body>
+<input type="text" id="txt" />
+<input type="button" value="创建LI标签" id="btn"/>
+<ul id="ul">
+</ul>
+</body>
+</html>

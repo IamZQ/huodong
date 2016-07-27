@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+.div1 {
+	width:150px;
+	height:200px;
+	background:#f60;
+	color:#fff;
+	position:absolute;
+	left:-150px;
+	top:80px;
+}
+.div1 span{
+	width:20px;
+	height:60px;
+	background:#0893d4;
+	color:#fff;
+	position:absolute;
+	top:80px;
+	font-size:12px;
+	text-align:center;
+	right:-20px;
+}
+ul li{
+	list-style-type:none;
+}
+img{
+	filter:alpha(opacity:30);
+	opacity:0.3
+}
+</style>
+</head>
+<body>
+    	<img id="uId" src="img/1.jpg" width="178" height="108" />
+<script>
+window.onload = function(){
+	var uId =document.getElementById('uId');
+		uId.onmouseover = function(){
+			starMove(100);
+		}
+		uId.onmouseout = function(){
+			starMove(30);
+	}
+}
+var alpha =30;
+var timer = null;
+function starMove(iTarget){
+	var uId =document.getElementById('uId');
+	clearInterval(timer);
+	timer = setInterval(function(){
+		var speed = 0;
+		if(alpha<iTarget){
+			speed = 10
+		}else{
+			speed = -10
+		}
+		if(alpha == iTarget){
+			clearInterval(timer);
+		}else{
+			alpha += speed;
+			uId.style.filter = 'alpha(opacity:'+speed+')';
+			uId.style.opacity = alpha/100;
+		}
+	},30);
+}
+</script>
+</body>
+</html>

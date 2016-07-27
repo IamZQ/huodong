@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<style>
+table tr td {
+	padding:8px 22px;
+	width:200px;
+}
+table tr{
+	
+}
+</style>
+<script>
+ window.onload = function (){
+	 var tab = document.getElementById('table1');
+	 var b1 = document.getElementById('b1');
+	 b1.onclick = function(){
+		 var arr = []; //定义一个数组
+		 for(var i=0; i<tab.tBodies[0].rows.length; i++){
+			 arr[i] = tab.tBodies[0].rows[i];
+			// alert(arr[i].innerHTML);
+		 }
+		 arr.sort(function(li1,li2){
+			 var n1 = parseInt(li1.cells[0].innerHTML);
+			 var n2 = parseInt(li2.cells[0].innerHTML);
+			 return n1-n2;
+		});
+		for(var i=0; i<arr.length; i++){
+			alert(arr[i].innerHTML);
+		}
+		for(var i=0; i<arr.length; i++){
+			tab.tBodies[0].appendChild(arr[i]);
+		}
+	} 
+}
+</script>
+</head>
+<body style="padding:200px;">
+<input type="button" id="b1"  value="排序"/>
+<table id="table1" border="1" width="500" >
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>姓名</td>
+      <td>年龄</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr> 
+      <td>4</td>
+      <td>麻子</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>李四</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Ljeary</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>张三</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>王二</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>张二</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Lj</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

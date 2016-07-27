@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div1{
+	width:200px;
+	height:200px;
+	background:#f60;
+	margin:100px;	
+	position:relative;
+}
+#div2{
+	width:100px;
+	height:100px;
+	background:#0893d4;
+	position:absolute;
+	left:50px;
+	top:50px;	
+}
+</style>
+<script>
+window.onload = function(){
+	//获取节点下第一个子节点
+	var ul = document.getElementById('ul');
+	var li = ul.getElementsByTagName('li');
+	//ie6-8兼容，其他不兼容
+	//ul.firstChild.style.background = "#f60";
+	//  兼容写法
+	//ul.firstElementChild.style.background = '#f60';
+	//浏览器兼容
+	if(ul.firstElementChild){
+		ul.firstElementChild.style.background = '#f60';
+		ul.nextElementSibling.style.background = '#f00';
+	}else{
+		ul.firstChild.style.background = "#f60";
+		ul.nextSibling.style.background = '#f00';
+	}
+}
+</script>
+</head>
+
+<body>
+	<ul id="ul">
+    	<li>11<span>隐藏</span></li>
+    	<li>22<span>隐藏</span></li>
+    	<li>33<span>隐藏</span></li>
+    	<li>44<span>隐藏</span></li>
+    	<li>55<span>隐藏</span></li>
+    </ul>
+	<ul id="ul1">
+    	<li>11<span>---------------------</span></li>
+    	<li>22<span>隐藏</span></li>
+    	<li>33<span>隐藏</span></li>
+    	<li>44<span>隐藏</span></li>
+    	<li>55<span>隐藏</span></li>
+    </ul>
+    <div id="div1">
+    	<div id="div2">div2</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+ul li{
+	list-style-type:none;
+	border-bottom:1px dashed #eaeaea;
+	line-height:24px;
+	padding:0 14px;
+	overflow:hidden;
+	opacity:0;
+	filter:alpha(opacity:0);
+}
+ul{
+	border:1px solid #eaeaea;
+	width:400px;
+	padding:0;
+	padding-bottom:24px;
+	padding-top:24px;	
+	overflow:hidden;
+}
+#div1{
+	width:200px;
+	height:200px;
+	background:#666;	
+	position:absolute;
+}
+</style>
+<script>
+window.onload=function (){
+	function getPos(aaaa){
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop; //处理出现滚动条的时候
+		var scrollLeft = document.documentElement.scrollLeft||document.body.scrollLeft; //处理出现滚动条的时候
+		return{x: aaaa.clientX+scrollLeft , y:aaaa.clientY + scrollTop }
+		
+	}
+	document.onmousemove = function(ev){
+		var oEvent = ev || event; //处理兼容性
+		var oDiv = document.getElementById('div1');
+		var pos = getPos(oEvent);
+		oDiv.style.left = pos.x +  'px';	
+		oDiv.style.top =  pos.y +  'px';	
+	}
+};
+</script>
+</head>
+
+<body style="height:3000px;">
+<div id="div1"></div>
+</body>
+</html>

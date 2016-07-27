@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+ul li{
+	list-style-type:none;
+	border-bottom:1px dashed #eaeaea;
+	line-height:24px;
+	padding:0 14px;
+	overflow:hidden;
+	opacity:0;
+	filter:alpha(opacity:0);
+}
+ul{
+	border:1px solid #eaeaea;
+	width:400px;
+	padding:0;
+	padding-bottom:24px;
+	padding-top:24px;	
+	overflow:hidden;
+}
+#div1{
+	width:200px;
+	display:none;
+	height:200px;
+	background:#666;	
+}
+</style>
+<script>
+window.onload=function (){
+	var oBtn = document.getElementById('btn1');
+	var oDiv = document.getElementById('div1');
+	oBtn.onclick = function(ev){
+		var oEvn = ev||event;
+			oDiv.style.display = 'block'; 
+			oEvn.cancelBubble = true;
+		};
+		document.onclick = function(){
+			oDiv.style.display = 'none'; 
+		};
+};
+</script>
+</head>
+
+<body>
+<input type="button" value="按钮" id="btn1" />
+<div id="div1"></div>
+</body>
+</html>

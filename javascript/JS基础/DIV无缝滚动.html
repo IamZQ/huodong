@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+* {
+	margin:0;
+	padding:0;
+}
+#oDiv .ul li {
+	float:left;
+	width:178px;
+	height:108px;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#oDiv {
+	width:712px;
+	height:108px;
+	position:relative;
+	background:#f60;
+	overflow:hidden;
+}
+#oDiv .ul{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:9;
+}
+.navSpan {
+	background: #f60 none repeat scroll 0 0;
+	color: #fff;
+	display: block;
+	font-size: 24px;
+	height: 40px;
+	line-height: 35px;
+	position: absolute;
+	top: 40px;
+	width: 20px;
+	z-index: 9999;
+	cursor:pointer;
+}
+.spanClass {
+  background: #f60 none repeat scroll 0 0;
+  border: 1px solid red;
+  display: block;
+  height: 20px;
+  width: 20px;
+  z-index: 9999999;
+  margin-top: 40px;
+  cursor:pointer;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+.allDiv {
+  margin: 100px;
+  width: 756px;
+}
+</style>
+<script>
+	window.onload = function (){
+			var speedNum = 2;//滚动速度
+			var speed = speedNum;
+			var oDiv = document.getElementById('oDiv');
+			var oUl = oDiv.getElementsByTagName('ul')[0];// 获取oDiv的UL ，[0] 表示oDiv里的第一个UL
+			
+			var aLi = oUl.getElementsByTagName("li");// 获取oUl里面的li标签。为了取到li标签的宽度和个数
+			oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;//ul = ul+ul; 把UL变成两个
+			//ul 的宽度= 第一个li标签的宽度*li标签的个数
+			oUl.style.width =  aLi[0].offsetWidth  * aLi.length + 'px';
+			//计算滚动-往左边滚动
+			function move(){
+				// 如果ul距左边像素< 负ul宽度/2， 那么ul距左边距离赋值0 
+				if(oUl.offsetLeft<-oUl.offsetWidth/2 ){
+					oUl.style.left = 0;
+				}
+				// 如果UL左边距>0， 那么给UL赋值UL宽度的一半
+				if(oUl.offsetLeft > 0){
+					oUl.style.left = -oUl.offsetWidth/2+'px';
+				}
+				//ul .left =ul距左边距离+5px
+				oUl.style.left =  oUl.offsetLeft + speed +'px'	;
+			}
+			// 开个定时器 30毫秒 执行一次操作
+			var timer = setInterval(move,30);
+			//鼠标移入DIV 滚动停止
+			oDiv.onmousemove = function(){ clearInterval(timer);}
+			//鼠标移出DIV 继续滚动
+			oDiv.onmouseout = function(){ timer = setInterval(move,30);}
+			// 点击第一个span 往左走
+			document.getElementsByTagName("span")[0].onclick=function(){
+				speed= -speedNum	
+			}
+			// 点击第二个span 往右走
+			document.getElementsByTagName("span")[1].onclick=function(){
+				speed= speedNum	
+			}
+			
+	};
+</script>
+</head>
+
+<body>
+<div class="allDiv">
+    <span class="spanClass left" >←</span>
+    <span class="spanClass right">→</span>
+    <div id="oDiv">
+      <ul class="ul">
+        <li> <img src="img/1.jpg" width="178" height="108"/> </li>
+        <li> <img src="img/2.jpg" width="178" height="108"/> </li>
+        <li> <img src="img/3.jpg" width="178" height="108"/> </li>
+        <li> <img src="img/4.jpg" width="178" height="108"/> </li>
+      </ul>
+</div>
+</div>
+</body>
+</html>

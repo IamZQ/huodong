@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<script>
+ window.onload = function (){
+	var oul = document.getElementById('ul');	
+	var btn = document.getElementById('btn');	
+	var txt = document.getElementById('txt');	 
+	btn.onclick = function(){
+		var oli = document.createElement('li');
+		//父级.appendChild(子节点);
+		oul.appendChild(oli);
+		//给LI标签赋值	
+		oli.innerHTML = txt.value;
+		//给LI李标签里面添加元素
+		//oli.innerHTML = "<span style='color:red;'>1253</span>";  
+	}
+}
+</script>
+</head>
+<body>
+<ul id="ul">
+</ul>
+<input type="text" id="txt" />
+<input type="button" value="创建LI标签" id="btn"/>
+</body>
+</html>

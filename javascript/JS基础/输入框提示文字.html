@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<title>js提示文字</title>
+<style type="text/css">
+input {
+	width:200px;
+	height:24px;
+	line-height:24px;
+	border:1px solid #999;
+	background:#ccc;
+	margin:15px 0 0 100px;
+	padding:4px;
+	color:#666;
+}
+.current {
+	background:#E0FEE4;
+	border:1px solid #093;
+}
+</style>
+</head>
+<body>
+<div id="div1">
+<input name="" type="text" value="请输入姓名：" class="inputClass"/>
+<br />
+<input name="" type="text" value="请输入昵称：" class="inputClass"/>
+<br />
+<input name="" type="text" value="输入验证码：" class="inputClass"/>
+<br />
+<input name="" type="text" value="请输入手机号码：" class="inputClass"/>
+<br />
+<input name="" type="text" value="请输入电子邮件：" class="inputClass"/>
+</div>
+<script type="text/javascript">
+	 var did = document.getElementById('div1');
+	 var aInp = did.getElementsByTagName('input');
+	 var sArray=[];
+	 for(var i=0; i<aInp.length; i++){
+		 aInp[i].bbq=i;
+		 sArray.push(aInp[i].value);
+		 aInp[i].onfocus=function(){
+		 if(sArray[this.bbq]==aInp[this.bbq].value){
+			 aInp[this.bbq].value='';
+		 }
+			 aInp[this.bbq].className = 'current';
+		 };
+			 aInp[i].onblur=function(){
+		 if(aInp[this.bbq].value==''){
+			 aInp[this.bbq].value=sArray[this.bbq];
+			console.info(sArray);
+		 }
+		 aInp[this.bbq].className='';
+	 };
+ }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<style>
+.div1 {
+	width:100px;
+	height:100px;
+	position:absolute;
+	left:900px;
+	top:200px;
+	background:#f60;
+}
+div {
+	width:1px;
+	height:800px;
+	position:absolute;
+	left:900px;
+	top:0px;
+	background:#f60;
+}
+</style>
+<script>
+
+function starMove(offsLeft){
+	var odiv = document.getElementById('odiv');
+	var odiv2 = document.getElementById('odiv2');
+	odiv2.style.left = offsLeft+'px';
+	var timer = null;
+	timer = setInterval(function(){
+		var speed = (offsLeft-odiv.offsetLeft)/10;
+		speed = speed>0 ? Math.ceil(speed) : Math.floor(speed); //取整 
+			odiv.style.left = odiv.offsetLeft+speed+'px';	
+		console.info(speed)
+	},30);
+}
+</script>
+</head>
+<body>
+<input type="button" value="运动" onclick="starMove(200)" />
+<div class="div1" id="odiv"></div>
+<div class="div2" id="odiv2"></div>
+</body>
+</html>

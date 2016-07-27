@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+*{
+	margin:100px;
+	padding:0;
+	list-style:none;	
+}
+#div1{
+	position:absolute;	
+	width:200px;
+	height:400px;
+	background:#eaeaea;
+	border:1px solid black;
+	display:none;
+}
+</style>
+<script>
+window.onload = function(){
+	var txt = document.getElementById('txt1');
+	txt.onkeydown = function(ev){
+		var oEvent = ev || event;
+		var oCode = oEvent.keyCode;
+		//alert(oCode);
+		//96 - 105
+		if(oCode!=8 &&( oCode>105 || oCode<96) && (oCode>58 || oCode< 47)){
+			return false;
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+	<input type="text" size="20" id="txt1"/>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script>
+//28课  完全懵逼
+function CreatePerson(name,qq){
+	this.name = name;
+	this.qq = qq;
+}
+CreatePerson.prototype.showName = function(){
+	alert('我的名字叫：'+this.name);
+}
+CreatePerson.prototype.showQq = function(){
+	alert('我的QQ是：'+this.qq);
+}
+var obj1 = new CreatePerson('李四','45678931')
+var obj2 = new CreatePerson('张三','123456');
+
+alert(obj1.showName());
+//alert(obj1.showName == obj2.showName);
+//alert(obj1.showName()+'  '+obj2.showName()+' '+obj1.showQq()+'  '+obj2.showQq())
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#parent {
+	width:20px;
+	background:#ccc;
+	position:relative;
+	float:right;
+	z-index:99;
+}
+#div1 {
+	width:20px;
+	background:#f60;
+	position:absolute;
+}
+#div2 {
+	width:400px;
+	height:300px;
+	border:1px solid #eaeaea;
+	position:relative;
+	overflow:hidden;
+	margin:40px auto;
+}
+#div3 {
+	position:absolute;
+	padding:10px;
+	z-index:9;
+}
+.parTop{
+	width:20px;
+	height:20px;
+	border-bottom:1px solid #fff;
+	position:absolute; 	
+	top:0px;
+}
+.parBtom{
+	width:20px;
+	height:20px;
+	border-top:1px solid #fff; 	
+	position:absolute;
+	bottom:0px;
+}
+</style>
+<script>
+//23
+window.onload = function(){
+	var oDiv = document.getElementById('div1');
+	var oParent = document.getElementById('parent');
+	var oDiv2 = document.getElementById('div2');
+	var oDiv3 = document.getElementById('div3');
+	var disY = 0;
+	//当内容不足滚动时，去掉滚动条
+	if(oDiv3.offsetHeight<oDiv2.offsetHeight+20){
+		oParent.style.display = 'none';
+	}
+	//计算出滚动条的高度
+	if(oDiv2.offsetHeight/oDiv3.offsetHeight * 100<10){
+		oDiv.style.height = '3%'
+	}else{
+		oDiv.style.height =  oDiv2.offsetHeight/oDiv3.offsetHeight * 100 +'%'; 
+	}
+	oParent.style.height = oDiv2.offsetHeight - 2 + 'px'; //计算出滚动条高度
+	oDiv3.style.width = oDiv2.offsetWidth - oParent.offsetWidth -18 + 'px'; //计算出内容DIV 宽度
+	//document.title = oDiv3.style.width;
+	//console.log( oDiv2.offsetWidth + '------' + oParent.offsetWidth);
+	oDiv.onmousedown = function(ev){
+		var oEvent = ev || event;
+		//坐标 = 鼠标位置 - Div距离左边的距离
+		disY = oEvent.clientY - oDiv.offsetTop; 
+		
+		//给DIV添加漂浮属性，设定DIV坐标
+		oDiv.style.top = oEvent.clientY-disY + 'px';
+		oDiv.style.position = 'absolute';
+		oDiv.style.margin = '0';
+		//给DIV添加漂浮属性，设定DIV坐标
+		if(oDiv.setCapture){
+			oDiv.onmousemove =mouseOverFn;
+			oDiv.onmouseup = mouseUpFn; 
+			oDiv.setCapture();
+			return false;
+		}else{
+			document.onmousemove = mouseOverFn;
+			document.onmouseup = mouseUpFn;
+		}
+		//合并函数
+		function mouseOverFn(ev){
+       		var direct = 0;
+			var oEvent = ev || event;
+			var t = oEvent.clientY - disY ;
+			var dT = document.documentElement.clientHeight;
+			if(t<0){
+				t=0;
+			}else if(t> oParent.offsetHeight - oDiv.offsetHeight){
+				t=oParent.offsetHeight - oDiv.offsetHeight;
+			}
+			//移动后坐标 = 鼠标位置 - 鼠标距离Div 的位置
+				oDiv.style.top = t + 'px';
+			//计算出滚动条百分比scale
+			var scale = t/(oParent.offsetHeight - oDiv.offsetHeight); 
+			console.info(scale);
+			oDiv3.style.top = -scale * (oDiv3.offsetHeight - oDiv2.offsetHeight) + 'px';
+		};
+		//鼠标弹起
+		function mouseUpFn(){
+			this.onmousemove = null; //当鼠标放开后move不执行
+			this.onmouseup = null;	
+			if(this.releaseCapture){
+				this.releaseCapture();
+			}
+		};
+
+		return false;
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div2">
+  <div id="parent">
+    <div id="div1"></div>
+  </div>
+  <div id="div3">不加var声明变量有什么区别?..JS中变量声明分显式申明和隐申明和隐式声明。 var num=100;//显式 num=100;//隐式...
+    www.imooc.com/qadetail... 
+    - 百度快照 - 130条评价
+    js中带var的声明和不带var的声明设计意图? - 前端开发 - 知乎
+    2014年1月19日 - 最近在学JS。我知道关于var声明和不带var声明的区别:诸如声明提前和delete还有声明时是否需要赋值定义等。所以,不用教我怎么用。我想问的是,从js这个...
+    www.zhihu.com/question... 
+    - 百度快照 - 1122条评价
+    - 百度快照 - 130条评价开发 -
+    - 百度快照 - 130条评价
+    js中带var的声明和不带var的声明设计? - 前端开
+    js中带var的声明和不带var的声明设计意图? - 前var声明的区别:诸如声明提前和delete还有声明时是否需要赋值定义等。所以,不用教我怎么用。我想问的是,从js这个...
+    www.zhihu.com/question... 
+    - 百度快照 - 1122条评价
+    - 百度快照 - 130条评价开发 -
+    - 百度快照 - 130条评价? - 前端开
+    js中带var的声明和不带var的声明设计意图? - 前var声明的区别:诸如声明提前和delete还有声明时是否需要赋值定义等。所以,不用教我怎么用。我想问的是,从js这个...
+    www.zhihu.com/question... 
+    - 百度快照 - 1122条评价
+    - 百度快照 - 130条评价开发 -
+    - 百度快照 - 130条评价? - 前端开
+    js中带var的声明和不带var的声明设计意图? - 前var声明的区别:诸如声明提前和delete还有声明时是否需要赋值定义等。所以,不用教我怎么用。我想问的是,从js这个...
+    www.zhihu.com/question... 
+    - 百度快照 - 1122条评价
+    - 百度快照 - 130条评价开发 -
+    - 百度快照 - 130条评价? - 前端开
+    js中带var的声明和不带var的声明设计意图? - 前var声明的区别:诸如声明提前和delete还有声明时是否需要赋值定义等。所以,不用教我怎么用。我想问的是,从js这个...
+    www.zhihu.com/question... 
+    - 百度快照 - 1122条评价
+    - 百度快照 - 130条评价开发 -
+    - 百度快照 - 130条评价
+   
+     </div>
+</div>
+</body>
+</html>

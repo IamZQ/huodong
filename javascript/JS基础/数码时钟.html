@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数码时钟</title>
+<script>
+/*判断时间为个数时，前面补位0，并把数字转换成字符*/
+function toDou(n){
+	if(n<10){
+		return '0'+n;
+	}else{
+		return ''+n;
+	}	
+}
+window.onload=function(){
+	var aImg = document.getElementsByTagName('img');
+	function showTime(){  
+		var date=new Date();
+		var timeS=toDou(date.getHours());
+		var timeF=toDou( date.getMinutes());
+		var timeM=toDou(date.getSeconds());
+		var timeH=toDou(date.getMilliseconds());
+		var str=timeS+timeF+timeM+timeH;
+		for(var i=0; i<aImg.length;i++){
+			//aImg[i].src='img/'+str[i]+'.png';// IE7 不兼容 ，识别不出str[i]
+			aImg[i].src='img/'+str.charAt(i)+'.png'; //兼容
+			console.info(aImg[i].src='img/'+str.charAt(i)+'.png');
+		}
+	}
+	setInterval(showTime,10);
+	showTime();
+}
+</script>
+</head>
+
+<body style="background:#000; font-size:50px; color:#fff">
+	<img src="img/0.png" />
+	<img src="img/0.png" />
+    ：
+	<img src="img/0.png" />
+	<img src="img/0.png" />
+   ：
+	<img src="img/0.png" />
+	<img src="img/0.png" />
+   ：
+	<img src="img/0.png" />
+	<img src="img/0.png" />
+</body>
+</html>

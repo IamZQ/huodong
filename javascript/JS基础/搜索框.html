@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+</style>
+</head>
+
+<body>
+<div class="searchContainer"> <div class="searchLeft"><span  id="selectType">找产品</span>
+      <ul class="searchLeftUl" id="selectUl">
+        <li onclick="selectValue()">找产品</li>
+        <li onclick="selectValue()">找商家</li>
+      </ul>
+  </div>
+  <input type="text" class="searchTxtInput" placeholder="点击输入" name="keyboard"/>
+  <input type="submit" value="搜索" name="submit" class="btn_srh">
+</div>
+<script>
+    function selectValue(){
+	var selectType = document.getElementById("selectType");
+	var obj_lis = document.getElementById("selectUl").getElementsByTagName("li");
+	for(i=0;i<obj_lis.length;i++){
+		obj_lis[i].onclick = function(){
+			selectType.innerHTML=this.innerHTML;
+		}
+	}
+}
+</script>
+</body>
+</html>

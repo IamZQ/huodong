@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>className</title>
+<script>
+ window.onload = function (){
+	var oul = document.getElementById('ul');
+	var btn = document.getElementById('btn');
+	var oli =  oul.getElementsByTagName('li');
+	for(var i=0; i<oli.length;i++){
+		if( oli[i].className=='box'){
+			oli[i].style.background = "red";
+		}
+	}
+	btn.onclick = function(){
+		oul.setAttribute('height','300px');	
+	} 
+}
+</script>
+</head>
+<body>
+<ul id="ul" style="background:#f60;">
+	<li></li>
+	<li class="box"></li>
+	<li></li>
+	<li></li>
+	<li class="box"></li>
+	<li class="box"></li>
+	<li></li>
+	<li></li>
+</ul>
+<input type="button" value="按钮" id="btn"/>
+</body>
+</html>
